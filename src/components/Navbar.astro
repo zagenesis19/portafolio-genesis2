@@ -1,0 +1,101 @@
+---
+import { Github, Linkedin, Mail, Menu, X } from 'lucide-astro';
+---
+
+<header class="fixed top-0 left-0 w-full z-50 border-b border-white/5 bg-[#0a0f1c]/70 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="font-bold text-xl tracking-tight text-white flex items-center gap-3">
+        <img src="/logo.svg" alt="Génesis Zapata" class="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(0,229,255,0.4)]" />
+        <span class="hidden sm:inline-block">Génesis Zapata</span>
+      </div>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="#proyectos" class="hover:text-white transition-colors">Proyectos</a>
+      <a href="#habilidades" class="hover:text-white transition-colors">Stack</a>
+      <a href="#experiencia" class="hover:text-white transition-colors">Experiencia</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <div class="hidden sm:flex items-center gap-4 border-r border-white/10 pr-4 mr-2">
+        <a href="https://github.com/viktobz" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+          <Github size={20} />
+          <span class="sr-only">GitHub</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+          <Linkedin size={20} />
+          <span class="sr-only">LinkedIn</span>
+        </a>
+        <a href="mailto:tu-email@example.com" class="text-slate-400 hover:text-white transition-colors">
+          <Mail size={20} />
+          <span class="sr-only">Email</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Abrir menú">
+        <Menu size={24} id="icon-menu" class="block" />
+        <X size={24} id="icon-close" class="hidden" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="absolute top-20 left-0 w-full h-screen bg-[#0a0f1c]/95 backdrop-blur-xl border-t border-white/10 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col items-center pt-12 gap-8 text-xl font-medium text-slate-300 z-40">
+      <a href="#proyectos" class="mobile-link hover:text-white transition-colors">Proyectos</a>
+      <a href="#habilidades" class="mobile-link hover:text-white transition-colors">Stack</a>
+      <a href="#experiencia" class="mobile-link hover:text-white transition-colors">Experiencia</a>
+      
+      <div class="flex gap-6 mt-8 pt-8 border-t border-white/10 w-3/4 justify-center">
+        <a href="https://github.com/viktobz" class="text-slate-400 hover:text-white"><Github size={24} /></a>
+        <a href="#" class="text-slate-400 hover:text-white"><Linkedin size={24} /></a>
+        <a href="mailto:tu-email@example.com" class="text-slate-400 hover:text-white"><Mail size={24} /></a>
+      </div>
+  </div>
+</header>
+
+<script>
+  // Simple Vanilla JS to handle Mobile Menu Toggle
+  const initMobileMenu = () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconClose = document.getElementById('icon-close');
+    const links = document.querySelectorAll('.mobile-link');
+
+    if (!btn || !menu) return;
+
+    const toggleMenu = () => {
+      const isClosed = menu.classList.contains('translate-x-full');
+      
+      if (isClosed) {
+        menu.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        iconMenu?.classList.add('hidden');
+        iconClose?.classList.remove('hidden');
+      } else {
+        menu.classList.add('translate-x-full');
+        document.body.style.overflow = '';
+        iconMenu?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+      }
+    };
+
+    btn.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('translate-x-full');
+        document.body.style.overflow = '';
+        iconMenu?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+      });
+    });
+  };
+
+  // Run on first load and astro view transitions
+  initMobileMenu();
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>

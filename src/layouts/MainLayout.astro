@@ -1,0 +1,63 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Génesis Zapata - Desarrolladora Fullstack & Arquitecta de Soluciones" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body class="bg-[#0a0f1c] text-slate-200 antialiased min-h-screen flex flex-col">
+		<Navbar />
+		
+		<main class="flex-grow pt-20">
+			<slot />
+		</main>
+
+		<Footer />
+
+		<script>
+			const initScrollReveal = () => {
+				const reveals = document.querySelectorAll('.reveal');
+				
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('active');
+							// Deja de observar si solo quieres la animación una vez:
+							observer.unobserve(entry.target);
+						}
+					});
+				}, {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.15
+				});
+
+				reveals.forEach(reveal => {
+					observer.observe(reveal);
+				});
+			};
+
+			// Ejecutar en la primera carga y en cada transición de vista
+			initScrollReveal();
+			document.addEventListener('astro:after-swap', initScrollReveal);
+		</script>
+	</body>
+</html>

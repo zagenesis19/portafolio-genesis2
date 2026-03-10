@@ -1,0 +1,105 @@
+---
+import { ExternalLink, Github, Database, Code2, Bot, Fingerprint } from 'lucide-astro';
+
+const projects = [
+  {
+    title: 'Vecta Mobility',
+    description: 'Ecosistema de movilidad integral con gestión de rutas complejas y bases de datos altamente normalizadas. Mi proyecto de arquitectura más robusto.',
+    tags: ['Laravel', 'Vue 3', 'Inertia.js', 'PostgreSQL'],
+    icon: Database,
+    gradientHover: 'from-blue-500/10 to-emerald-500/10',
+    iconGradient: 'from-blue-600 to-emerald-600',
+    shadowClass: 'shadow-blue-500/20',
+    links: { github: '#', demo: '#' }
+  },
+  {
+    title: 'Traductor de Lengua de Señas (IA)',
+    description: 'Software de Inteligencia Artificial que emplea Computer Vision para interpretar y traducir la Lengua de Señas Venezolana a texto y audio en tiempo real.',
+    tags: ['Python', 'Computer Vision', 'IA', 'OpenCV'],
+    icon: Bot,
+    gradientHover: 'from-violet-500/10 to-fuchsia-500/10',
+    iconGradient: 'from-violet-600 to-fuchsia-600',
+    shadowClass: 'shadow-violet-500/20',
+    links: { github: '#', demo: '#' }
+  },
+  {
+    title: 'TotalLub Automation',
+    description: 'Sistema de automatización diseñado para la API de MercadoLibre, optimizando y escalando la publicación masiva y gestión de productos.',
+    tags: ['Python', 'APIs', 'Automatización'],
+    icon: Code2,
+    gradientHover: 'from-amber-500/10 to-orange-500/10',
+    iconGradient: 'from-amber-500 to-orange-500',
+    shadowClass: 'shadow-amber-500/20',
+    links: { github: '#', demo: '#' }
+  },
+  {
+    title: 'Sistema Biométrico & SIGME',
+    description: 'Sistema analítico y de control de asistencia universitaria. Proyecto destacado por mi rol como Líder Técnica, donde coordiné al equipo, definí la arquitectura base y supervisé la integración vital entre hardware biométrico y la plataforma web.',
+    tags: ['Liderazgo Técnico', 'Team Management', 'Arquitectura', 'Bases de Datos'],
+    icon: Fingerprint,
+    gradientHover: 'from-cyan-500/10 to-blue-500/10',
+    iconGradient: 'from-cyan-500 to-blue-500',
+    shadowClass: 'shadow-cyan-500/20',
+    links: { github: '#', demo: '#' }
+  }
+];
+---
+
+<section id="proyectos" class="py-24 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 z-0 bg-[#0a0f1c]"></div>
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="mb-16">
+      <h2 class="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 mb-4 tracking-tight">
+        Proyectos Destacados
+      </h2>
+      <p class="text-slate-400 text-lg max-w-2xl">
+        Una selección de soluciones de software en las que he diseñado la arquitectura y liderado el desarrollo, integrando ecosistemas complejos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      {projects.map((project) => (
+        <div class="reveal group relative rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/[0.07] transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col h-full hover:-translate-y-1">
+          
+          <!-- Hover Gradient Overlay -->
+          <div class={`absolute opacity-0 group-hover:opacity-100 transition-opacity duration-500 inset-0 bg-gradient-to-br ${project.gradientHover}`}></div>
+
+          <!-- Header Card -->
+          <div class="flex justify-between items-start mb-6 relative z-10">
+            <div class={`p-3 rounded-xl bg-gradient-to-br ${project.iconGradient} shadow-lg ${project.shadowClass}`}>
+              <project.icon size={28} class="text-white" />
+            </div>
+            
+            <div class="flex gap-4">
+              <a href={project.links.github} class="text-slate-400 hover:text-white transition-colors" aria-label="Ver código en GitHub">
+                <Github size={22} />
+              </a>
+              <a href={project.links.demo} class="text-slate-400 hover:text-white transition-colors" aria-label="Ver demo del proyecto">
+                <ExternalLink size={22} />
+              </a>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-slate-100 mb-3 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-colors">
+            {project.title}
+          </h3>
+          
+          <p class="text-slate-400 leading-relaxed mb-8 flex-grow relative z-10">
+            {project.description}
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-auto relative z-10">
+            {project.tags.map((tag) => (
+              <span class="px-3 py-1 text-xs font-semibold text-slate-300 bg-black/30 border border-white/10 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

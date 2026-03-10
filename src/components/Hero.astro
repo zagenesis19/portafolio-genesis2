@@ -1,0 +1,135 @@
+---
+import { ArrowRight, Terminal, FileText } from 'lucide-astro';
+---
+
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+  <!-- Dynamic Background / Glow Effects -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px]"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[128px]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+      
+      <!-- Text Content -->
+      <div class="flex-1 text-center lg:text-left mt-10 md:mt-0">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm mb-8 backdrop-blur-sm animate-fade-in mx-auto lg:mx-0 shadow-lg shadow-black/20">
+          <Terminal size={16} class="text-blue-400" />
+          <span class="tracking-wide">Disponibilidad inmediata para nuevos retos</span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500 pb-2 leading-tight">
+          Arquitecta de Soluciones <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">
+            & Fullstack Developer
+          </span>
+        </h1>
+
+        <p class="mt-6 text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          Soy Génesis Zapata. Construyo sistemas robustos enfocado en la resolución de problemas reales, desde APIs de alto rendimiento hasta IA.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
+          <a href="#proyectos" class="group relative px-8 py-4 bg-white text-slate-950 font-bold rounded-xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] w-full sm:w-auto flex items-center justify-center gap-2">
+            <span class="relative z-10 flex items-center gap-2">
+              Ver Proyectos Destacados
+              <ArrowRight size={18} class="group-hover:translate-x-1 transition-transform" />
+            </span>
+          </a>
+
+          <a href="/cv-genesis.pdf" target="_blank" rel="noopener noreferrer" title="Recuerda agregar el archivo cv-genesis.pdf en la carpeta public" class="px-8 py-4 bg-blue-600/10 border border-blue-500/30 hover:bg-blue-600/20 hover:border-blue-500/50 text-blue-400 font-bold rounded-xl backdrop-blur-sm transition-all hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2 group">
+            <FileText size={18} class="group-hover:-translate-y-0.5 transition-transform" />
+            Descargar CV
+          </a>
+        </div>
+      </div>
+      
+      <!-- Profile Image Layout -->
+      <div class="flex-1 w-full max-w-sm md:max-w-md mt-12 lg:mt-0 relative animate-fade-in-up">
+        <div class="relative w-full aspect-square flex items-center justify-center">
+            <!-- Intersecting Glow behind image -->
+            <div class="absolute inset-x-0 bottom-0 top-1/4 bg-gradient-to-tr from-blue-600/40 to-violet-600/40 rounded-full blur-[100px] z-0"></div>
+            
+            <!-- Image container (Glass window) -->
+            <div class="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-[2.5rem] md:rounded-[3rem] p-2 bg-gradient-to-tr from-blue-500/30 via-slate-800 to-violet-500/30 backdrop-blur-md shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
+              <div class="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] overflow-hidden bg-[#050812] border border-white/10 relative group">
+                <!-- Fallback gradient si la imagen no está aún -->
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-[#0a0f1c] -z-10 animate-pulse"></div>
+                <!-- Imagen real -->
+                <img 
+                  src="/profile.jpg" 
+                  alt="Génesis Zapata - Desarrolladora Fullstack" 
+                  class="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0 relative z-10"
+                />
+              </div>
+            </div>
+
+            <!-- Floating Tech Badges (Desktop only) -->
+            <div class="absolute top-8 -right-8 lg:-right-12 z-20 bg-[#0a0f1c]/90 backdrop-blur-md border border-white/10 p-3 rounded-2xl flex items-center gap-3 animate-float shadow-2xl hidden md:flex">
+              <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+              </div>
+              <div class="text-left pr-2">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Líder Técnica</p>
+                <p class="text-sm text-white font-bold leading-none mt-1">+2 Años Experiencia</p>
+              </div>
+            </div>
+            
+            <div class="absolute bottom-10 -left-8 lg:-left-12 z-20 bg-[#0a0f1c]/90 backdrop-blur-md border border-white/10 p-3 rounded-2xl flex items-center gap-3 animate-float-delayed shadow-2xl hidden md:flex">
+              <div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+              </div>
+              <div class="text-left pr-2">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Arquitecta</p>
+                <p class="text-sm text-white font-bold leading-none mt-1">Sistemas & BD</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack Mini Display -->
+    <div class="mt-20 pt-10 border-t border-white/5 text-slate-500 pb-12 reveal">
+      <p class="text-sm font-bold uppercase tracking-widest mb-6 text-center lg:text-left">Tech Stack Central</p>
+      <div class="flex flex-wrap justify-center lg:justify-start gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+        <span class="text-lg font-bold hover:text-blue-400 transition-colors">Python</span>
+        <span class="text-lg font-bold hover:text-[#FF2D20] transition-colors">Laravel</span>
+        <span class="text-lg font-bold hover:text-[#FF5D01] transition-colors">Astro</span>
+        <span class="text-lg font-bold hover:text-[#41B883] transition-colors">Vue 3</span>
+        <span class="text-lg font-bold hover:text-[#38BDF8] transition-colors">Tailwind v4</span>
+        <span class="text-lg font-bold hover:text-[#336791] transition-colors">PostgreSQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1.2s ease-out forwards;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1.2s ease-out forwards;
+  }
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 5s ease-in-out infinite;
+    animation-delay: 2.5s;
+  }
+</style>

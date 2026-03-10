@@ -1,0 +1,24 @@
+<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9d00ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <g filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))">
+    <path d="M140 120 C100 120, 80 150, 80 200 C80 250, 100 280, 140 280 C170 280, 185 265, 190 240 L160 240 L160 210 L220 210 L220 300 L180 300 C160 300, 140 295, 120 285" 
+          stroke="url(#logo-grad)" stroke-width="25" stroke-linecap="round" fill="none" />
+    
+    <path d="M190 225 L210 245 L195 245 L205 260 L195 265 L185 250 L175 255 Z" fill="url(#logo-grad)" />
+
+    <path d="M230 120 L320 120 L230 280 L320 280" 
+          stroke="url(#logo-grad)" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <circle cx="230" cy="120" r="12" fill="url(#logo-grad)" />
+    <circle cx="320" cy="120" r="12" fill="white" />
+    <circle cx="275" cy="200" r="12" fill="url(#logo-grad)" />
+    <circle cx="230" cy="280" r="12" fill="white" />
+    <circle cx="320" cy="280" r="12" fill="url(#logo-grad)" />
+  </g>
+</svg>
