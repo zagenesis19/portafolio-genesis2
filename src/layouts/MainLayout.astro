@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
 	title: string;
@@ -31,6 +32,7 @@ const { title, description = "Génesis Zapata - Desarrolladora Fullstack & Arqui
 		</main>
 
 		<Footer />
+		<Analytics />
 
 		<script>
 			const initScrollReveal = () => {
