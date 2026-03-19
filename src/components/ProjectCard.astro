@@ -1,0 +1,150 @@
+---
+/**
+ * ProjectCard.astro
+ * Engineering case-study card: Problem → Solution → Key Achievement
+ * Glassmorphism + gradient borders + tech pills
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  role: string;
+  technologies: string[];
+  problem: string;
+  solution: string;
+  key_achievement: string;
+  github_url?: string;
+  demo_url?: string;
+  icon: string;
+  gradient_from: string;
+  gradient_to: string;
+  accent_color: string;
+}
+
+const {
+  title,
+  role,
+  technologies,
+  problem,
+  solution,
+  key_achievement,
+  github_url,
+  demo_url,
+  icon,
+  gradient_from,
+  gradient_to,
+  accent_color,
+} = Astro.props;
+
+import { Database, Server, Code2, Fingerprint, Bot, Zap, Smartphone, Github, ExternalLink } from 'lucide-astro';
+
+const iconMap: Record<string, any> = {
+  database: Database,
+  server: Server,
+  code: Code2,
+  fingerprint: Fingerprint,
+  bot: Bot,
+  zap: Zap,
+  smartphone: Smartphone,
+};
+
+const IconComponent = iconMap[icon] || Code2;
+
+const accentMap: Record<string, { text: string; bg: string; border: string; shadow: string; gradient: string }> = {
+  cyan:    { text: 'text-cyan-400',    bg: 'bg-cyan-500/15',    border: 'border-cyan-500/30',    shadow: 'shadow-cyan-500/20',    gradient: 'from-cyan-500 to-blue-600' },
+  violet:  { text: 'text-violet-400',  bg: 'bg-violet-500/15',  border: 'border-violet-500/30',  shadow: 'shadow-violet-500/20',  gradient: 'from-violet-500 to-fuchsia-600' },
+  blue:    { text: 'text-blue-400',    bg: 'bg-blue-500/15',    border: 'border-blue-500/30',    shadow: 'shadow-blue-500/20',    gradient: 'from-blue-500 to-emerald-500' },
+  amber:   { text: 'text-amber-400',   bg: 'bg-amber-500/15',   border: 'border-amber-500/30',   shadow: 'shadow-amber-500/20',   gradient: 'from-amber-500 to-orange-500' },
+  emerald: { text: 'text-emerald-400', bg: 'bg-emerald-500/15', border: 'border-emerald-500/30', shadow: 'shadow-emerald-500/20', gradient: 'from-emerald-500 to-teal-500' },
+};
+
+const accent = accentMap[accent_color] || accentMap.cyan;
+---
+
+<article class="reveal group relative rounded-2xl bg-white/[0.03] border border-white/[0.08] overflow-hidden flex flex-col h-full transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:border-white/15 project-card">
+  
+  <!-- Hover gradient overlay -->
+  <div class={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br ${gradient_from} ${gradient_to} pointer-events-none`}></div>
+  
+  <!-- Animated top border glow -->
+  <div class={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${accent.gradient} opacity-40 group-hover:opacity-100 transition-opacity duration-500`}></div>
+
+  <div class="relative z-10 p-6 md:p-8 flex flex-col h-full">
+    
+    <!-- Header: Icon + Title + Role -->
+    <div class="flex items-start justify-between mb-6">
+      <div class="flex items-center gap-4">
+        <div class={`p-3 rounded-xl bg-gradient-to-br ${accent.gradient} shadow-lg ${accent.shadow} flex items-center justify-center`}>
+          <IconComponent size={24} class="text-white" />
+        </div>
+        <div>
+          <h3 class="text-xl md:text-2xl font-bold text-slate-100 group-hover:text-white transition-colors leading-tight">
+            {title}
+          </h3>
+          <span class={`inline-flex items-center mt-1 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-widest rounded-full ${accent.bg} ${accent.text} border ${accent.border}`}>
+            {role}
+          </span>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="flex gap-3 mt-1 shrink-0">
+        {github_url && (
+          <a href={github_url} target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors" aria-label="Ver código en GitHub">
+            <Github size={20} />
+          </a>
+        )}
+        {demo_url && (
+          <a href={demo_url} target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors" aria-label="Ver demo">
+            <ExternalLink size={20} />
+          </a>
+        )}
+      </div>
+    </div>
+
+    <!-- Problem → Solution blocks -->
+    <div class="space-y-4 mb-6 flex-grow">
+      <!-- Problem -->
+      <div class="relative pl-4 border-l-2 border-amber-500/40">
+        <p class="text-[11px] font-bold uppercase tracking-widest text-amber-400/80 mb-1.5 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block"></span>
+          Problema
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed">{problem}</p>
+      </div>
+
+      <!-- Solution -->
+      <div class={`relative pl-4 border-l-2 border-cyan-500/40`}>
+        <p class="text-[11px] font-bold uppercase tracking-widest text-cyan-400/80 mb-1.5 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+          Solución Técnica
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed">{solution}</p>
+      </div>
+    </div>
+
+    <!-- Key Achievement -->
+    <div class={`mb-6 p-4 rounded-xl bg-white/[0.04] border border-white/[0.06] group-hover:bg-white/[0.06] transition-colors`}>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Logro Clave</p>
+      <p class={`text-sm md:text-base font-semibold ${accent.text} leading-snug`}>
+        🏆 {key_achievement}
+      </p>
+    </div>
+
+    <!-- Tech pills -->
+    <div class="flex flex-wrap gap-2 mt-auto">
+      {technologies.map((tech) => (
+        <span class="px-3 py-1 text-[11px] font-semibold text-slate-300 bg-black/30 border border-white/[0.08] rounded-full hover:bg-white/10 hover:border-white/20 transition-colors">
+          {tech}
+        </span>
+      ))}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+</style>

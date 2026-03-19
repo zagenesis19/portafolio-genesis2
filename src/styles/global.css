@@ -5,6 +5,8 @@
   --color-dark-elevated: #111827;
   --color-brand-primary: #3b82f6;
   --color-brand-secondary: #8b5cf6;
+  --color-accent-cyan: #00E5FF;
+  --color-accent-purple: #BF40FF;
 }
 
 @layer base {

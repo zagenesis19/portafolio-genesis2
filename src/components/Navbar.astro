@@ -19,15 +19,15 @@ import { Github, Linkedin, Mail, Menu, X } from 'lucide-astro';
 
     <div class="flex items-center gap-4">
       <div class="hidden sm:flex items-center gap-4 border-r border-white/10 pr-4 mr-2">
-        <a href="https://github.com/zagenesis19" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+        <a href="https://github.com/zagenesis19" target="_blank" rel="noopener noreferrer" data-astro-reload class="text-slate-400 hover:text-white transition-colors" title="GitHub">
           <Github size={20} />
           <span class="sr-only">GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/g%C3%A9nesis-zapata-990471227/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+        <a href="https://www.linkedin.com/in/g%C3%A9nesis-zapata-990471227/" target="_blank" rel="noopener noreferrer" data-astro-reload class="text-slate-400 hover:text-white transition-colors" title="LinkedIn">
           <Linkedin size={20} />
           <span class="sr-only">LinkedIn</span>
         </a>
-        <a href="mailto:zgenesisangelina2025@gmail.com" class="text-slate-400 hover:text-white transition-colors">
+        <a href="mailto:zgenesisangelina2025@gmail.com" data-astro-reload class="text-slate-400 hover:text-white transition-colors" title="Email">
           <Mail size={20} />
           <span class="sr-only">Email</span>
         </a>
@@ -48,9 +48,9 @@ import { Github, Linkedin, Mail, Menu, X } from 'lucide-astro';
       <a href="#experiencia" class="mobile-link hover:text-white transition-colors">Experiencia</a>
       
       <div class="flex gap-6 mt-8 pt-8 border-t border-white/10 w-3/4 justify-center">
-        <a href="https://github.com/zagenesis19" class="text-slate-400 hover:text-white"><Github size={24} /></a>
-        <a href="https://www.linkedin.com/in/g%C3%A9nesis-zapata-990471227/" class="text-slate-400 hover:text-white"><Linkedin size={24} /></a>
-        <a href="mailto:zgenesisangelina2025@gmail.com" class="text-slate-400 hover:text-white"><Mail size={24} /></a>
+        <a href="https://github.com/zagenesis19" target="_blank" rel="noopener noreferrer" data-astro-reload class="text-slate-400 hover:text-white" title="GitHub"><Github size={24} /></a>
+        <a href="https://www.linkedin.com/in/g%C3%A9nesis-zapata-990471227/" target="_blank" rel="noopener noreferrer" data-astro-reload class="text-slate-400 hover:text-white" title="LinkedIn"><Linkedin size={24} /></a>
+        <a href="mailto:zgenesisangelina2025@gmail.com" data-astro-reload class="text-slate-400 hover:text-white" title="Email"><Mail size={24} /></a>
       </div>
   </div>
 </header>

@@ -1,88 +1,197 @@
 ---
-import { Briefcase, GraduationCap, ChevronRight } from 'lucide-astro';
+import { Briefcase, GraduationCap, ChevronRight, Shield, Database, Cpu, FileCode, Smartphone, Zap, Bot } from 'lucide-astro';
 
 const experiences = [
   {
-    role: "Fullstack Developer & Technical Lead",
+    role: "Tech Lead",
+    company: "Bestmenu · Startup España",
+    period: "2026 — Presente",
+    type: "leadership" as const,
+    description: "Liderazgo técnico integral: desde la toma de decisiones arquitectónicas hasta la gobernanza de código del equipo.",
+    decisions: [
+      { icon: Database, label: "Multi-tenant PostgreSQL 17", detail: "Aislamiento total de datos por tenant" },
+      { icon: Shield, label: "UUIDs + Soft Deletes", detail: "Seguridad e integridad referencial" },
+      { icon: FileCode, label: "Swagger API Docs", detail: "Documentación al 100% de endpoints" },
+      { icon: Cpu, label: "PHP 8.2 Governance", detail: "Estándares de código y linting estricto" },
+    ],
+    icon: Briefcase,
+  },
+  {
+    role: "Architect & Developer",
+    company: "Vecta Mobility",
+    period: "2026",
+    type: "work" as const,
+    description: "Ecosistema de ride-hailing (Laravel 11/Vue 3) con validación biométrica via face-api.js y desnormalización estratégica de BD para baja latencia.",
+    highlight: "Biometría en tiempo real · Latencia <100ms",
+    icon: Smartphone,
+  },
+  {
+    role: "Developer",
+    company: "Total Lub",
+    type: "work" as const,
+    description: "Automatización del programa de fidelización:Generación dinámica de QR y PDF.",
+    highlight: "Atomatización de proceso de publicación masiva",
+    icon: Bot,
+  },
+  {
+    role: "Junior backend intern",
     company: "Fibex Telecom",
-    period: "Pasante - Presente",
-    description: "Desarrollo de soluciones empresariales críticas y automatizaciones. Destacada por mi proactividad y liderazgo en la toma de decisiones técnicas, proponiendo arquitecturas escalables y guiando al equipo multidisciplinario en la implementación de estándares sólidos.",
-    icon: Briefcase
+    period: "2025",
+    type: "work" as const,
+    description: "Optimización masiva de backend: resolución de N+1 Queries con Bulk Operations (SQLAlchemy) y diseño de orquestador multihilo con Asyncio para +20 dispositivos biométricos.",
+    highlight: "N+1 → Bulk Ops · +20 dispositivos sincronizados",
+    icon: Cpu,
+  },
+  {
+    role: "Lead Tech",
+    company: "SIGME · Automatización",
+    type: "work" as const,
+    description: "Automatización de emisión de títulos legales universitarios con Python y PostgreSQL.",
+    highlight: "133 títulos en <30 min (antes tomaba días)",
+    icon: Zap,
   },
   {
     role: "TSU en Informática",
     company: "Universidad de Tecnología Antonio José de Sucre (UTS)",
-    period: "Estudiante",
+    period: "2023-2026",
+    type: "education" as const,
     description: "Formación académica enfocada en algoritmia, diseño de bases de datos, redes y arquitectura de software.",
-    icon: GraduationCap
+    icon: GraduationCap,
   }
 ];
 ---
 
 <section id="experiencia" class="py-24 relative border-t border-white/5 bg-[#0a0f1c]">
-  <!-- Background Glow -->
-  <div class="absolute left-0 bottom-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+  <!-- Background Glows -->
+  <div class="absolute left-0 bottom-0 w-[400px] h-[400px] bg-cyan-600/8 rounded-full blur-[100px] pointer-events-none"></div>
+  <div class="absolute right-0 top-0 w-[300px] h-[300px] bg-violet-600/8 rounded-full blur-[100px] pointer-events-none"></div>
 
-  <div class="max-w-4xl mx-auto px-6 relative z-10">
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
     <div class="mb-16 text-center md:text-left">
-      <h2 class="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-500 mb-4 tracking-tight">
-        Experiencia & Formación
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm mb-6 backdrop-blur-sm shadow-lg shadow-black/20">
+        <Briefcase size={16} class="text-cyan-400" />
+        <span class="font-medium tracking-wide uppercase">Trayectoria</span>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-500 mb-4 tracking-tight">
+        Technical Timeline
       </h2>
-      <p class="text-slate-400 text-lg">
-        Mi trayectoria profesional y bases académicas.
+      <p class="text-slate-400 text-lg max-w-2xl">
+        Cada rol ha forjado una decisión técnica que define mi enfoque como <span class="text-white font-medium">Líder Técnica</span>.
       </p>
     </div>
 
-    <div class="space-y-12 md:space-y-8">
-      {experiences.map((exp, index) => (
-        <div class="relative pl-8 md:pl-0">
-          <!-- Desktop Layout -->
-          <div class="md:grid md:grid-cols-5 md:gap-8 items-start">
+    <div class="relative">
+      <!-- Main timeline line -->
+      <div class="absolute left-[18px] md:left-[22px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500/50 via-violet-500/30 to-transparent"></div>
+
+      <div class="space-y-6 md:space-y-8">
+        {experiences.map((exp, index) => (
+          <div class="relative pl-12 md:pl-16">
             
-            <div class="hidden md:block col-span-1 text-right pt-2 text-sm font-bold tracking-wider text-slate-400/80 uppercase">
-              {exp.period}
+            <!-- Timeline Node -->
+            <div class={`absolute left-[10px] md:left-[14px] top-6 w-4 h-4 md:w-5 md:h-5 rounded-full z-10 flex items-center justify-center ${
+              exp.type === 'leadership' 
+                ? 'bg-gradient-to-br from-cyan-400 to-violet-500 shadow-[0_0_20px_rgba(0,229,255,0.5)]' 
+                : exp.type === 'education' 
+                  ? 'bg-violet-500 shadow-[0_0_12px_rgba(139,92,246,0.4)]'
+                  : 'bg-slate-600 shadow-[0_0_10px_rgba(100,116,139,0.3)]'
+            }`}>
+              {exp.type === 'leadership' && (
+                <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white animate-pulse"></span>
+              )}
             </div>
 
-            <div class="col-span-4 relative group">
-              <!-- Timeline vertical line (Desktop) -->
-              <div class={`hidden md:block absolute left-[-26px] top-6 bottom-[-60px] w-[2px] bg-white/10 ${index === experiences.length - 1 ? 'hidden' : ''}`}></div>
-              
-              <!-- Timeline Node (Desktop) -->
-              <div class="absolute hidden md:flex left-[-32px] top-2 w-3.5 h-3.5 rounded-full bg-brand-primary shadow-[0_0_15px_rgba(59,130,246,0.6)] z-10 items-center justify-center"></div>
-              
-               <!-- Timeline vertical line (Mobile) -->
-               <div class={`md:hidden absolute left-[-26px] top-4 bottom-[-60px] w-[2px] bg-white/10 ${index === experiences.length - 1 ? 'hidden' : ''}`}></div>
-
-               <!-- Timeline Node (Mobile) -->
-              <div class="md:hidden absolute left-[-31px] top-1 w-3 h-3 rounded-full bg-brand-primary shadow-[0_0_15px_rgba(59,130,246,0.6)] z-10"></div>
-              
-
-              <!-- Mobile specific period label -->
-              <div class="md:hidden text-xs font-bold text-brand-primary mb-3 tracking-widest uppercase flex items-center gap-2">
-                <ChevronRight size={14} />
-                {exp.period}
-              </div>
-
-              <!-- Card Content -->
-              <div class="reveal bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-blue-900/20">
-                <div class="flex items-center gap-3 mb-2">
-                  <div class="p-2.5 bg-white/5 rounded-lg border border-white/10 text-brand-primary">
-                    <exp.icon size={22} />
-                  </div>
-                  <h3 class="text-xl md:text-2xl font-bold text-slate-100">{exp.role}</h3>
+            {/* LEADERSHIP CARD — Bestmenu expanded */}
+            {exp.type === 'leadership' ? (
+              <div class="reveal group">
+                <!-- Period label -->
+                <div class="text-xs font-bold text-cyan-400 mb-3 tracking-widest uppercase flex items-center gap-2">
+                  <ChevronRight size={14} />
+                  {exp.period}
                 </div>
-                <h4 class="text-base md:text-lg text-brand-secondary font-medium mb-4 pl-[52px] md:pl-[56px] -mt-2">
-                  {exp.company}
-                </h4>
-                <p class="text-slate-400 leading-relaxed text-sm md:text-base border-t border-white/5 pt-4 mt-2">
-                  {exp.description}
-                </p>
+
+                <!-- Main card with premium border -->
+                <div class="relative rounded-2xl overflow-hidden">
+                  <!-- Gradient border effect -->
+                  <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/30 via-violet-500/20 to-cyan-500/30 rounded-2xl"></div>
+                  
+                  <div class="relative m-[1px] bg-[#0b1121]/95 backdrop-blur-xl rounded-2xl p-6 md:p-8 group-hover:bg-[#0d1326]/95 transition-colors duration-500">
+                    
+                    <div class="flex items-center gap-3 mb-2">
+                      <div class="p-2.5 bg-gradient-to-br from-cyan-500/20 to-violet-500/20 rounded-xl border border-cyan-500/20 text-cyan-400 shadow-lg shadow-cyan-500/10">
+                        <Briefcase size={22} />
+                      </div>
+                      <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">{exp.role}</h3>
+                        <p class="text-cyan-400/80 font-medium text-sm">{exp.company}</p>
+                      </div>
+                    </div>
+
+                    <p class="text-slate-400 text-sm leading-relaxed mt-4 mb-6 border-t border-white/5 pt-4">
+                      {exp.description}
+                    </p>
+
+                    <!-- Architectural Decisions Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {exp.decisions?.map((decision) => (
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-cyan-500/20 transition-all duration-300 group/item">
+                          <div class="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0 mt-0.5">
+                            <decision.icon size={16} />
+                          </div>
+                          <div>
+                            <p class="text-sm font-semibold text-slate-200 leading-tight">{decision.label}</p>
+                            <p class="text-xs text-slate-500 mt-0.5">{decision.detail}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            
+            ) : (
+              /* STANDARD CARD */
+              <div class="reveal group">
+                <!-- Period label -->
+                <div class={`text-xs font-bold mb-3 tracking-widest uppercase flex items-center gap-2 ${
+                  exp.type === 'education' ? 'text-violet-400' : 'text-slate-500'
+                }`}>
+                  <ChevronRight size={14} />
+                  {exp.period}
+                </div>
+
+                <div class="bg-white/[0.03] border border-white/[0.08] p-5 md:p-6 rounded-2xl hover:bg-white/[0.06] transition-all duration-300 backdrop-blur-sm group-hover:-translate-y-0.5 group-hover:shadow-xl group-hover:shadow-black/20">
+                  <div class="flex items-center gap-3 mb-1.5">
+                    <div class={`p-2 rounded-lg border border-white/10 ${
+                      exp.type === 'education' ? 'bg-violet-500/10 text-violet-400' : 'bg-white/5 text-slate-400'
+                    }`}>
+                      <exp.icon size={20} />
+                    </div>
+                    <div>
+                      <h3 class="text-lg md:text-xl font-bold text-slate-100">{exp.role}</h3>
+                      <p class={`text-sm font-medium ${
+                        exp.type === 'education' ? 'text-violet-400/70' : 'text-slate-500'
+                      }`}>{exp.company}</p>
+                    </div>
+                  </div>
+                  
+                  <p class="text-slate-400 leading-relaxed text-sm border-t border-white/5 pt-3 mt-3">
+                    {exp.description}
+                  </p>
+
+                  {exp.highlight && (
+                    <div class="mt-3 pt-3 border-t border-white/5">
+                      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-cyan-400 bg-cyan-500/8 border border-cyan-500/15 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        {exp.highlight}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 </section>
